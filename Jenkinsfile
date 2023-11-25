@@ -61,6 +61,11 @@ pipeline {
                 sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
+        stage("Run the advanced acceptance test") {
+            steps {
+                sh "./gradlew acceptanceTest -D calculator.url=http://localhost:8765"
+            }
+        }
     }
     post {
         always {
